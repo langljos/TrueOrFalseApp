@@ -8,6 +8,7 @@ namespace TrueOrFalseApp
         public string Question { get; set; }
         //public string Image { get; set; }
         public List<Choice> Choices { get; private set; }
+        public static List<QuizQuestion> Questions { private set; get; }
 
         public void SetChoices(Choice firstchoice, Choice secondChoice)
         {

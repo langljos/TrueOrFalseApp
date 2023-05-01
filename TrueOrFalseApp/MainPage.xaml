@@ -7,24 +7,67 @@
         <Frame BackgroundColor="DodgerBlue" Padding="24" CornerRadius="0">
             <Label x:Name="quizName" TextColor="GhostWhite" HorizontalTextAlignment="Center" FontSize="36"/>
         </Frame>
-        <Image x:Name="imageSpot" Source="" HeightRequest="150" IsVisible="false"></Image>
-        <Grid RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-         
-                <Label Grid.Row="0" Grid.ColumnSpan="2" x:Name="questionArea" FontSize="20" Padding="30,0,30,0" TextColor="Black" IsVisible="false" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
-                <Button Grid.Row="0" Grid.ColumnSpan="2" Text="Start Quiz" FontSize="24" Clicked="StartQuiz" x:Name="startButton" IsVisible="true" HorizontalOptions="Center" />
-                <Button Grid.Row="1" Grid.Column="0" x:Name="trueButton" Text="True"  FontSize="24" Clicked="ResponsePressed" IsVisible="false" HorizontalOptions="Center" />
-                <Button Grid.Row="1" Grid.Column="1" x:Name="falseButton" Text="False" FontSize="24" Clicked="ResponsePressed" IsVisible="false" HorizontalOptions="Center" />
+
+
         
-           </Grid>
+        <Image x:Name="imageSpot" Source="" HeightRequest="150" IsVisible="false"></Image>
+             <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+            <Label 
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="2" 
+                    x:Name="endResults"  
+                    IsVisible="false"
+                    Style="{StaticResource LabelStyle}"
+                    Text="" 
+                />
+            <Label 
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="2" 
+                    x:Name="questionArea"  
+                    IsVisible="false"
+                    Style="{StaticResource LabelStyle}"
+                    Text="{Binding Question}" 
+                />
+            <Button 
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="2" 
+                    x:Name="startButton"
+                    Clicked="StartQuiz" 
+                    IsVisible="true" 
+                    Style="{StaticResource ButtonStyle}"
+                    Text="Start Quiz"
+                />
+            <Button 
+                    Grid.Row="1" 
+                    Grid.Column="0" 
+                    x:Name="falseButton"
+                    Clicked="ResponsePressed" 
+                    IsVisible="false" 
+                    Style="{StaticResource ButtonStyle}"
+                    Text="{Binding Choices[1].Option}"
+                />
+            <Button 
+                    Grid.Row="1" 
+                    Grid.Column="1" 
+                    x:Name="trueButton"  
+                    Clicked="ResponsePressed" 
+                    IsVisible="false" 
+                    Style="{StaticResource ButtonStyle}"
+                    Text="{Binding Choices[0].Option}"
+                />
+
+        </Grid>
     </StackLayout>
 
 </ContentPage>
