@@ -22,31 +22,34 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+
+
+            
+
+
+            
             <Image 
                 
-                Grid.Row="2" 
-                Grid.RowSpan="8"
+                Grid.Row="4" 
+                Grid.RowSpan="4"
                 Grid.ColumnSpan="2" 
-              
+                
                 x:Name="imageSpot" 
-                Source="on-train.jpg" 
+                Source="{Binding Image}" 
                 HeightRequest="150" 
                 IsVisible="true"
                 >
             </Image>
-
-
             <local:SwipeContainer 
+                
                 x:Name="swipeContainer"
                 Swipe="OnSwiped"
-                Grid.Row="2" 
-                Grid.RowSpan="8"
+                Grid.Row="1" 
+                Grid.RowSpan="16"
                 Grid.ColumnSpan="2"
                 IsEnabled="False"
             >
             </local:SwipeContainer>
-
-
 
 
 
@@ -73,7 +76,7 @@
                     Text="{Binding Question}" 
                 />
             <Button 
-                    Grid.Row="1" 
+                    Grid.Row="2" 
                    
                     Grid.Column="0" 
                     x:Name="falseButton"
@@ -83,7 +86,7 @@
                     Text="{Binding Choices[1].Option}"
                 />
             <Button 
-                    Grid.Row="1" 
+                    Grid.Row="2" 
                    
                     Grid.Column="1" 
                     x:Name="trueButton"  
@@ -93,7 +96,7 @@
                     Text="{Binding Choices[0].Option}"
                 />
             <Button 
-                    Grid.Row="1" 
+                    Grid.Row="0" 
                     Grid.ColumnSpan="2"
                   
                     x:Name="startButton"
@@ -102,6 +105,8 @@
                     Style="{StaticResource ButtonStyle}"
                     Text="Start Quiz"
                 />
+
+            
 
 
 

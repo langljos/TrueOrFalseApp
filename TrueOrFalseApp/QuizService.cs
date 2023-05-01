@@ -26,7 +26,7 @@ namespace TrueOrFalseApp
             questions.Add(CreateQuestion(
                 0, 
                 "Are you taking this quiz on your phone?",              
-                "looking-at-phone.jpeg",                    
+                "first.jpeg",                    
                 new Choice("Sure am", 1),
                 new Choice("No way", 0)
                 ));
@@ -34,7 +34,7 @@ namespace TrueOrFalseApp
             questions.Add(CreateQuestion(
                 1, 
                 "Do you keep your phone in arm's reach when you sleep?",
-                "man-sleeping-with-phone.jpeg",
+                "second.jpeg",
                 new Choice("Who doesn't?", 1),
                 new Choice("Nope", 0)
                 ));
@@ -42,7 +42,7 @@ namespace TrueOrFalseApp
             questions.Add(CreateQuestion(
                 2, 
                 "Do you use your phone to check the time?",
-                "screen-time.jpeg",  
+                "third.jpeg",  
                 new Choice("All the time", 1),
                 new Choice("Never", 0)
                 ));
@@ -50,7 +50,7 @@ namespace TrueOrFalseApp
             questions.Add(CreateQuestion(
                 3, 
                 "Have you ever gotten distracted whilst checking your phone?",
-                "notifications.jpeg",   
+                "fourth.jpeg",   
                 new Choice("Who hasn't?", 1),  
                 new Choice("What's that?", 0)
                 ));
@@ -58,7 +58,7 @@ namespace TrueOrFalseApp
             questions.Add(CreateQuestion(
                 4, 
                 "Is your phone the first option source of entertainment when you're waiting for something in public?",
-                "on-train.jpeg",                   
+                "fifth.jpeg",                   
                 new Choice("Always", 1),                  
                 new Choice("Boring!", 0)
                 ));

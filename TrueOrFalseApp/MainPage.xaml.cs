@@ -43,7 +43,7 @@ namespace TrueOrFalseApp
             trueButton.IsVisible = false;
             falseButton.IsVisible = false;
             startButton.IsVisible = true;
-            Grid.SetRow(startButton, 1);
+            Grid.SetRow(startButton, 2);
             startButton.Text = "Retake Quiz?";
             swipeContainer.IsEnabled = false;
         }
