@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:TrueOrFalseApp" 
              x:Class="TrueOrFalseApp.MainPage">
 
     <StackLayout BackgroundColor="GhostWhite" Spacing="10">
@@ -8,23 +9,54 @@
             <Label x:Name="quizName" TextColor="GhostWhite" HorizontalTextAlignment="Center" FontSize="36"/>
         </Frame>
 
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
 
-        
-        <Image x:Name="imageSpot" Source="" HeightRequest="150" IsVisible="false"></Image>
-             <Grid RowSpacing="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image 
+                
+                Grid.Row="2" 
+                Grid.RowSpan="8"
+                Grid.ColumnSpan="2" 
+              
+                x:Name="imageSpot" 
+                Source="on-train.jpg" 
+                HeightRequest="150" 
+                IsVisible="true"
+                >
+            </Image>
+
+
+            <local:SwipeContainer 
+                x:Name="swipeContainer"
+                Swipe="OnSwiped"
+                Grid.Row="2" 
+                Grid.RowSpan="8"
+                Grid.ColumnSpan="2"
+                IsEnabled="False"
+            >
+            </local:SwipeContainer>
+
+
+
+
+
+
+
 
 
             <Label 
                     Grid.Row="0" 
+                    Grid.RowSpan="1" 
                     Grid.ColumnSpan="2" 
                     x:Name="endResults"  
                     IsVisible="false"
@@ -33,6 +65,7 @@
                 />
             <Label 
                     Grid.Row="0" 
+                    Grid.RowSpan="1" 
                     Grid.ColumnSpan="2" 
                     x:Name="questionArea"  
                     IsVisible="false"
@@ -40,34 +73,42 @@
                     Text="{Binding Question}" 
                 />
             <Button 
-                    Grid.Row="0" 
-                    Grid.ColumnSpan="2" 
-                    x:Name="startButton"
-                    Clicked="StartQuiz" 
-                    IsVisible="true" 
-                    Style="{StaticResource ButtonStyle}"
-                    Text="Start Quiz"
-                />
-            <Button 
                     Grid.Row="1" 
+                   
                     Grid.Column="0" 
                     x:Name="falseButton"
-                    Clicked="ResponsePressed" 
+                    Clicked="ResponsePressed"
                     IsVisible="false" 
                     Style="{StaticResource ButtonStyle}"
                     Text="{Binding Choices[1].Option}"
                 />
             <Button 
                     Grid.Row="1" 
+                   
                     Grid.Column="1" 
                     x:Name="trueButton"  
-                    Clicked="ResponsePressed" 
+                    Clicked="ResponsePressed"
                     IsVisible="false" 
                     Style="{StaticResource ButtonStyle}"
                     Text="{Binding Choices[0].Option}"
                 />
+            <Button 
+                    Grid.Row="1" 
+                    Grid.ColumnSpan="2"
+                  
+                    x:Name="startButton"
+                    Clicked="StartQuiz" 
+                    IsVisible="true" 
+                    Style="{StaticResource ButtonStyle}"
+                    Text="Start Quiz"
+                />
+
+
 
         </Grid>
+
+
+
     </StackLayout>
 
 </ContentPage>

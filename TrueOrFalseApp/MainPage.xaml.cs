@@ -14,11 +14,19 @@ namespace TrueOrFalseApp
         private List<QuizQuestion> _questionList;
         private QuizQuestion _quizQuestion;
         private double _totalScore = 0;
-
         public MainPage()
         {
             InitializeComponent();
             InitializeQuiz();
+        }
+
+        void OnSwiped(object sender, SwipedEventArgs e)
+        {
+            if (e.Direction == SwipeDirection.Right || e.Direction == SwipeDirection.Left)
+            {
+                CalculateScoreSwipe(e.Direction.ToString());
+                CheckNextQuestion();
+            }
         }
 
         public void InitializeQuiz()
@@ -31,35 +39,41 @@ namespace TrueOrFalseApp
         {
             DetermineResults();
 
+            imageSpot.IsVisible = false;
             trueButton.IsVisible = false;
             falseButton.IsVisible = false;
             startButton.IsVisible = true;
             Grid.SetRow(startButton, 1);
             startButton.Text = "Retake Quiz?";
+            swipeContainer.IsEnabled = false;
         }
         private void StartQuiz(object sender, EventArgs args)
         {
+            startButton.IsVisible = false;
             endResults.Text = "";
             endResults.IsVisible = false;
             _totalScore = 0;
             _quizQuestion = _questionList[0];
             SetBindingContext();
 
+            imageSpot.IsVisible = true;
             trueButton.IsVisible = true;
             falseButton.IsVisible = true;
             questionArea.IsVisible = true;
-            startButton.IsVisible = false;
+            
+            swipeContainer.IsEnabled = true;
         }
         private void ResponsePressed(object sender, EventArgs args)
         {
             Button button = (Button)sender;
-            CalculateScore(button);
+            CalculateScoreButton(button);
             CheckNextQuestion();
         }
 
         private void SetBindingContext()
         {
             BindingContext = _questionList[_quizQuestion.Id];
+            Console.WriteLine(_quizQuestion.Image);
         }
 
         private void AdvanceToNextItem()
@@ -68,16 +82,33 @@ namespace TrueOrFalseApp
             SetBindingContext();
         }
 
-        private void CalculateScore(Button button)
+        private void CalculateScoreButton(Button button)
         {
-            if (button.StyleId == "trueButton")
+            if (button != null)
+            {
+                if (button.StyleId == "trueButton")
+                {
+                    _totalScore = _totalScore + _questionList[_quizQuestion.Id].Choices[0].Value;
+                }
+                else if (button.StyleId == "falseButton")
+                {
+                    _totalScore = _totalScore + _questionList[_quizQuestion.Id].Choices[1].Value;
+                }
+            }
+              
+        }
+
+        private void CalculateScoreSwipe(string direction)
+        {
+            if (direction == "Right")
             {
                 _totalScore = _totalScore + _questionList[_quizQuestion.Id].Choices[0].Value;
             }
-            else
+            else if (direction == "Left")
             {
                 _totalScore = _totalScore + _questionList[_quizQuestion.Id].Choices[1].Value;
             }
+        
         }
 
         private void CheckNextQuestion()
@@ -108,7 +139,9 @@ namespace TrueOrFalseApp
             endResults.Text = $"Your score was {_totalScore} out of 5.\n{result}";
         }
 
+        private void falseButton_Clicked(object sender, EventArgs e)
+        {
 
-        
+        }
     }
 }
